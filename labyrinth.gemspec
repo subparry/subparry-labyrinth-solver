@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email                  = ['subparry@gmail.com']
   spec.summary                = 'An exercise for gem creation based on solving a labyrinth'
   spec.description            = 'This gem allows to find path for exiting a labyrinth'
-  # spec.homepage
+  spec.homepage               = 'https://github.com/subparry/subparry-labyrinth-solver'
   spec.license                = 'MIT'
   spec.platform               = Gem::Platform::RUBY
   spec.required_ruby_version  = '>= 2.7.1'

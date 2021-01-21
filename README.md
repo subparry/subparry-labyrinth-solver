@@ -3,5 +3,3 @@
 ## Description
 
 Fun little project about labyrinth solving.
-
-## Usage
