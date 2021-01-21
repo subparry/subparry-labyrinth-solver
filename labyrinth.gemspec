@@ -24,7 +24,8 @@ Gem::Specification.new do |spec|
                                   'labyrinth.gemspec'
                                 ]
   spec.extra_rdoc_files = ['README.md']
-
+  
+  spec.add_development_dependency 'codecov', '~> 0.1'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rubocop', '~> 1.8'
   spec.add_development_dependency 'rubocop-performance', '~> 1.5'
