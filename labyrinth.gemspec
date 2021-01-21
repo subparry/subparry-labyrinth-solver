@@ -14,11 +14,20 @@ Gem::Specification.new do |spec|
   spec.platform               = Gem::Platform::RUBY
   spec.required_ruby_version  = '>= 2.7.1'
 
-  spec.files                  = Dir['README.md', 'LICENSE'] # etc... files to include in the bundled gem
+  spec.files                  = Dir[
+                                  'README.md',
+                                  'LICENSE',
+                                  'CHANGELOG.md',
+                                  'Gemfile',
+                                  'Rakefile',
+                                  'lib/**/*.rb',
+                                  'labyrinth.gemspec'
+                                ]
   spec.extra_rdoc_files = ['README.md']
 
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rubocop', '~> 1.8'
   spec.add_development_dependency 'rubocop-performance', '~> 1.5'
   spec.add_development_dependency 'rubocop-rspec', '~> 2.1'
+  spec.add_development_dependency 'simplecov', '~> 0.16'
 end
