@@ -1,0 +1,13 @@
+*.gem
+coverage/*
+Gemfile.lock
+*~
+.bundle
+.ruby-version
+log/*
+measurement/*
+pkg/*
+.DS_Store
+.env
+spec/dummy/tmp/*
+spec/dummy/log/*.log
