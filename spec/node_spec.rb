@@ -36,8 +36,4 @@ RSpec.describe Node do
     node.close(:right)
     expect(node.open?(:right)).to eq(false)
   end
-
-  it 'fails' do
-    expect(true).to eq(false)
-  end
 end
