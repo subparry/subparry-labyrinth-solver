@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require '../lib/subparry_labyrinth_solver/labyrinth'
-require '../lib/subparry_labyrinth_solver/exceptions'
-
 data = [
   [
     { up: false, right: false, left: false, down: true },
@@ -13,7 +10,7 @@ data = [
     { up: true, down: false, right: false, left: true }
   ]
 ]
-RSpec.describe Labyrinth do
+describe LabyrinthSolver::Labyrinth do
   let(:lab) { described_class.new(data) }
 
   context 'when initializing' do
@@ -48,7 +45,7 @@ RSpec.describe Labyrinth do
         [
           { up: true, down: false, right: true, left: false },
           { up: true, down: false, right: false, left: true }
-        ]]) }.to raise_error MissingCheeseError
+        ]]) }.to raise_error LabyrinthSolver::MissingCheeseError
       end
     end
   end
@@ -69,11 +66,11 @@ RSpec.describe Labyrinth do
     end
 
     it 'disallows moving through walls' do
-      expect { lab.go(:left) }.to raise_error InvalidMoveError
+      expect { lab.go(:left) }.to raise_error LabyrinthSolver::InvalidMoveError
     end
 
     it 'raises error if attempting to move to non existent direction' do
-      expect { lab.go(:diagonal) }.to raise_error InvalidMoveError
+      expect { lab.go(:diagonal) }.to raise_error LabyrinthSolver::InvalidMoveError
     end
   end
 end

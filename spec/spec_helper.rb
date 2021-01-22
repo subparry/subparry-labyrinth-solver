@@ -15,6 +15,7 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'simplecov'
+require 'subparry_labyrinth_solver'
 
 SimpleCov.start do
   add_filter 'spec/'

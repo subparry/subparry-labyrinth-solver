@@ -1,19 +1,17 @@
 # frozen_string_literal: true
 
-require 'node_helper'
-
-RSpec.describe Node do
+RSpec.describe LabyrinthSolver::Node do
   context 'when created' do
     it 'raises error if not given enough paths' do
-      expect { described_class.new({}) }.to raise_error MissingPathsError
+      expect { described_class.new({}) }.to raise_error LabyrinthSolver::MissingPathsError
     end
 
     it 'creates node given enough paths' do
-      expect(described_class.new(up: false, right: true, down: true, left: false)).to be_an_instance_of Node
+      expect(described_class.new(up: false, right: true, down: true, left: false)).to be_an_instance_of LabyrinthSolver::Node
     end
 
     it 'Accepts optional cheese parameter' do
-      expect(described_class.new(up: false, right: true, down: true, left: false, cheese: true)).to be_an_instance_of Node  
+      expect(described_class.new(up: false, right: true, down: true, left: false, cheese: true)).to be_an_instance_of LabyrinthSolver::Node  
     end
   end
 

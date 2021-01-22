@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../lib/subparry_labyrinth_solver/solver'
-
 data = [
   [
     { up: false, right: false, left: false, down: true },
@@ -31,9 +29,9 @@ bifurcated_data = [
   ],
 ]
 
-RSpec.describe Solver do
-  let(:solver) { described_class.new(Labyrinth.new(data)) }
-  let(:bifurcated) { described_class.new(Labyrinth.new(bifurcated_data)) }
+RSpec.describe LabyrinthSolver::Solver do
+  let(:solver) { described_class.new(LabyrinthSolver::Labyrinth.new(data)) }
+  let(:bifurcated) { described_class.new(LabyrinthSolver::Labyrinth.new(bifurcated_data)) }
 
   context 'when initializing' do
     it 'receives a labyrinth instance as argument' do
