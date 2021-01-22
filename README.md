@@ -6,4 +6,4 @@
 
 ## Description
 
-Fun little project about labyrinth solving...
+Fun little project about labyrinth solving.
