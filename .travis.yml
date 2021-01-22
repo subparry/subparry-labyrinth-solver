@@ -1,12 +1,9 @@
 language: ruby
 rvm:
   - 2.7.1
-
 install: bundle install --retry=3
-
 before_install:
   - gem update bundler
-
 script: rspec
 after_success:
   - echo 'everything good!'
@@ -14,7 +11,7 @@ deploy:
   provider: rubygems
   gem: subparry_labyrinth_solver
   api_key:
-    secure: 'WSbqoh30mEsXk00qJOPDbcwBh0LfmvBzFTD25FD+CtemEht6p8GKcIRhjyD09uamJCcKnZYJkXSqtnVejjZPGlITgIIWe9JknyZNzyJSxQA7L0yZnTmQP+3KiwdAc1dikaO/X/w+9zC0sQJyrdbjSFIHdxBkBzwXzE/AsdVgl215522tMeiCwafW2cjQ9FT+rw3yGXGRbnsoWh8NMhiD/AJVEz6gz3tD4J0YMsUR9pK19kSANu00f1EDwHRsMGZUX/Tr4UxpkUiAI8grE2vBpaTY8HYBvE0WBQRdRugkksd5g52tasGJnhdVme8Ni93bmJ5w4waLLpIgdNHnfwfJ5tRbmKlBAHm3ao2ag/2K6dGmDoeM/koEmiM+tNfK8mE7HE/johNZplJGXw5irQ7ObIUlVnIeEY8SaSpKWLTOH4goWuHINNlbwEomM0jSteKM9v4T8Ej0JnkA9o0cvIBf0nRgGskv8lMIZ/676smUVriuB+FBmh+PAyz4yYtP/n87FfsVc1/YvAC2e7GVLL4oPm9YRnmW51o2dI3qaluaMmznFCmwpMToGR/XGlWh3rgKdoUQ41CmVqvVJ6r7CNWf6oeXM2Fp4TYzgsLqySOxV4x5oUZbFkyzpWOWG1ZlmlHUeuhi0tue35JkvrBCQOGSojDnJ7Nw878KEdJDxSWjCdE='
+    secure: Et0ga8Ngg2yONmyjHHJDPtsnngXY1fLKKemUY1YzEQxi5bt656hFlNNCq+pJakTXA+sQu6cCDlD9Z2oWySVoamXRoR7J+YEQyUL2VtnxCnzF/7foGhoUvZoro+DouaARYT8OpcNf1CSITyrwNIq0YqzxGeDdQNOtFplYxEFj/QEtXsIZ70sCMAtdRjiBmxhxm46UNWFFS5YSuMdCauYX41FAq3Q0d1bks9hZUuPMUGitVV9VH+5JZF5A2/W/f4OapPOC5vrX4ColEVmaIHHAfbuiZoUUm4s/5d44wOab6hGu962w9OKLkvrO4znX9e2HD/QEchc40udPLalPuPtSpP7IMg3ypx6IjpDowEIo52kTpP3tHsfNXJTqPu6aWIvtRhI8FnAUSaxQLj5gARj/36wm1FGWqRj9DhXRaeju2YZE2nXbn5E2SDMBzvh+ubfdrKfHlKAVY7qAvaO5A7ahcAHLG7F5QimRxMAAjm1bLo1E7fbU6LfZROGsdJAxQnKkx3o4kaYEtptWJUYantWVCKWzTMKUcEIPALKU1DfY5Il/25TJp5SJf75Y4qpmJU3f9P4QpMqkySMbFWYt1C8rCb0KvJpmioQ/tNyOmX3jTc8h6E7jFmD/+eBuK3p1S1c4aKgrVbEeEzRxxRs0ky47nwHWx8M+0tMZJQGX8MpjnDU=
   gemspec: labyrinth.gemspec
   on:
     tags: true
