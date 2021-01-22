@@ -1,0 +1,1 @@
+require 'subparry_labyrinth_solver/solver'
