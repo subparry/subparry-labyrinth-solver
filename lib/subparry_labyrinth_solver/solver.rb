@@ -23,6 +23,8 @@ module LabyrinthSolver
       next_dir = OPPOSITE_DIRECTIONS.find { |dir, opp| @labyrinth.open?(dir) && opp != @path.last }
       return dead_end unless next_dir
 
+      return dead_end if circled?
+
       go(next_dir.first)
       @path.push(next_dir.first)
     end
@@ -32,11 +34,36 @@ module LabyrinthSolver
     end
 
     private
-    
+
     def dead_end
       to_close = path.pop
       go(OPPOSITE_DIRECTIONS[to_close])
       close(to_close)
+    end
+
+    def circled?
+      return false if path.size < 4
+
+      idx = path.size - 1
+      control_point = Point.new(position.x, position.y)
+
+      loop do
+        case path[idx]
+        when :up
+          control_point.y += 1
+        when :down
+          control_point.y -= 1
+        when :left
+          control_point.x += 1
+        when :right
+          control_point.x -= 1
+        end
+        return true if control_point == position
+
+        return false if idx.zero?
+
+        idx -= 1
+      end
     end
   end
 end

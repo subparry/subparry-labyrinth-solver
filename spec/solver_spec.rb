@@ -29,9 +29,71 @@ bifurcated_data = [
   ],
 ]
 
+circular_paths = [
+  [
+    { up: false, right: true, left: false, down: true },
+    { up: false, right: true, left: true, down: false },
+    { up: false, right: false, left: true, down: true }
+  ],
+  [
+    { up: true, right: true, left: false, down: false },
+    { up: false, right: true, left: true, down: true },
+    { up: true, right: false, left: true, down: false }
+  ],
+  [
+    { up: false, right: true, left: false, down: false, cheese: true },
+    { up: true, right: true, left: true, down: false },
+    { up: false, right: false, left: true, down: false }
+  ],
+]
+circular_paths2 = [
+  [
+    { up: false, right: true, left: false, down: true },
+    { up: false, right: true, left: true, down: false },
+    { up: false, right: true, left: true, down: true },
+    { up: false, right: true, left: true, down: false },
+    { up: false, right: false, left: true, down: true }
+  ],
+  [
+    { up: true, right: false, left: false, down: true },
+    { up: false, right: false, left: false, down: false },
+    { up: true, right: false, left: false, down: false, cheese: true },
+    { up: false, right: false, left: false, down: false },
+    { up: true, right: false, left: false, down: true }
+  ],
+  [
+    { up: true, right: true, left: false, down: false },
+    { up: false, right: true, left: true, down: false },
+    { up: false, right: true, left: true, down: false },
+    { up: false, right: true, left: true, down: false },
+    { up: true, right: false, left: true, down: false }
+  ],
+]
+
+no_walls_data = [
+  [
+    { up: false, right: true, left: false, down: true },
+    { up: false, right: true, left: true, down: true },
+    { up: false, right: false, left: true, down: true }
+  ],
+  [
+    { up: true, right: true, left: false, down: true },
+    { up: true, right: true, left: true, down: true },
+    { up: true, right: false, left: true, down: true }
+  ],
+  [
+    { up: true, right: true, left: false, down: false, cheese: true },
+    { up: true, right: true, left: true, down: false },
+    { up: true, right: false, left: true, down: false }
+  ],
+]
+
 RSpec.describe LabyrinthSolver::Solver do
   let(:solver) { described_class.new(LabyrinthSolver::Labyrinth.new(data)) }
   let(:bifurcated) { described_class.new(LabyrinthSolver::Labyrinth.new(bifurcated_data)) }
+  let(:circular) { described_class.new(LabyrinthSolver::Labyrinth.new(circular_paths)) }
+  let(:circular2) { described_class.new(LabyrinthSolver::Labyrinth.new(circular_paths2)) }
+  let(:no_walls) { described_class.new(LabyrinthSolver::Labyrinth.new(no_walls_data)) }
 
   context 'when initializing' do
     it 'receives a labyrinth instance as argument' do
@@ -86,6 +148,48 @@ RSpec.describe LabyrinthSolver::Solver do
     it 'delivers right path for bifurcated labyrinth' do
       bifurcated.solve
       expect(bifurcated.path).to eq(%i[down down right up])
+    end
+
+    it 'solves labyrinth with circular paths 1' do
+      thread = Thread.new do
+        circular.solve
+      end
+      sleep 0.5
+      if thread.status == 'run'
+        thread.kill
+        raise RuntimeError "Infinite loop solving circular maze"
+      else
+        thread.join
+      end
+      expect(circular.cheese?).to eq(true)
+    end
+
+    it 'solves labyrinth with circular paths 2' do
+      thread = Thread.new do
+        circular2.solve
+      end
+      sleep 0.5
+      if thread.status == 'run'
+        thread.kill
+        raise RuntimeError "Infinite loop solving circular maze"
+      else
+        thread.join
+      end
+      expect(circular2.cheese?).to eq(true)
+    end
+
+    it 'solves labyrinth with no walls' do
+      thread = Thread.new do
+        no_walls.solve
+      end
+      sleep 0.5
+      if thread.status == 'run'
+        thread.kill
+        raise RuntimeError "Infinite loop solving maze"
+      else
+        thread.join
+      end
+      expect(no_walls.cheese?).to eq(true)
     end
   end
 end

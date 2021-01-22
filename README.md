@@ -10,9 +10,7 @@ Fun little project about labyrinth solving inspired in mice that find cheese in 
 
 It exposes some classes to create a labyrinth and then find the path to the cheese.
 
-Be advised: **It does not support labyrinths with circular paths and if you try to solve one of these, it will result in an infinite loop**.
-
-That being said, I plan to support that kind of labyrinths soon.
+Note that although the paths found are mostly efficient, the algorithm does not focus on finding **the best** path to the cheese.
 
 ## Usage
 
@@ -40,7 +38,7 @@ data = [
   ]
 ]
 
-# This data represents this maze:
+# The above data represents this maze:
 #      ___ ___
 #     |   | 🧀|
 #     |   |   |
@@ -72,6 +70,6 @@ solver.position # => <struct x: 1, y: 0>
 
 ## Pending
 
-- Support labyrinths with circular paths
 - Create a labyrinth maker class
 - Visual representation of labyrinths
+- Document Node and Labyrinth classes
